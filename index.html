@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos 提案書 | 運送業向けファクタリング事業 Webサイト制作</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --asphalt:#2D3138;
+    --line-yellow:#F5B942;
+    --steel:#4A6FA5;
+    --fog:#F0F2F5;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Noto Sans JP','Zen Kaku Gothic New',sans-serif;
+    color:var(--asphalt);
+    background:var(--fog);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New','Oswald',sans-serif;
+    letter-spacing:0.02em;
+  }
+
+  .eyebrow{
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.25em;
+    font-size:0.8rem;
+    text-transform:uppercase;
+  }
+
+  a{text-decoration:none;}
+
+  img{max-width:100%;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(11,31,58,0.96) 0%, rgba(11,31,58,0.88) 60%, rgba(11,31,58,0.98) 100%),
+      radial-gradient(circle at 80% 20%, rgba(74,111,165,0.35), transparent 45%),
+      var(--navy);
+    color:var(--white);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:6rem 6vw 4rem;
+  }
+
+  .road-line{
+    position:absolute;
+    top:50%;
+    left:-10%;
+    width:130%;
+    height:6px;
+    transform:translateY(-50%) rotate(-6deg);
+    background:repeating-linear-gradient(
+      90deg,
+      var(--line-yellow) 0 60px,
+      transparent 60px 100px
+    );
+    opacity:0.85;
+    z-index:1;
+  }
+
+  .road-line.two{
+    top:62%;
+    transform:translateY(-50%) rotate(-6deg);
+    opacity:0.35;
+  }
+
+  .road-line.three{
+    top:38%;
+    transform:translateY(-50%) rotate(-6deg);
+    opacity:0.35;
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:920px;
+  }
+
+  .hero .eyebrow{
+    color:var(--line-yellow);
+    margin-bottom:1.4rem;
+    display:inline-block;
+    border:1px solid rgba(245,185,66,0.5);
+    padding:0.4rem 1rem;
+    border-radius:2px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.6rem);
+    font-weight:900;
+    line-height:1.4;
+    margin-bottom:1.6rem;
+  }
+
+  .hero h1 span{
+    color:var(--line-yellow);
+  }
+
+  .hero p.lead{
+    font-size:1.05rem;
+    max-width:600px;
+    color:rgba(255,255,255,0.85);
+    margin-bottom:2.2rem;
+  }
+
+  .hero .sub-note{
+    font-size:0.9rem;
+    color:rgba(255,255,255,0.55);
+    border-left:2px solid var(--line-yellow);
+    padding-left:1rem;
+  }
+
+  /* ===== SECTION GENERAL ===== */
+  section{
+    padding:5.5rem 6vw;
+  }
+
+  .section-head{
+    margin-bottom:3rem;
+    max-width:780px;
+  }
+
+  .section-head .eyebrow{
+    color:var(--steel);
+    margin-bottom:0.8rem;
+    display:block;
+  }
+
+  .section-head h2{
+    font-size:clamp(1.6rem, 3.4vw, 2.4rem);
+    font-weight:700;
+    color:var(--navy);
+  }
+
+  /* ===== UNDERSTANDING ===== */
+  .understand{
+    background:var(--white);
+    position:relative;
+  }
+
+  .understand::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:6px;
+    height:100%;
+    background:repeating-linear-gradient(180deg, var(--line-yellow) 0 40px, transparent 40px 70px);
+  }
+
+  .understand-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:3rem;
+    align-items:start;
+  }
+
+  .understand-text p{
+    margin-bottom:1.2rem;
+    font-size:0.98rem;
+    color:#3a3f47;
+  }
+
+  .understand-text strong{
+    color:var(--navy);
+  }
+
+  .site-cards{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+
+  .site-card{
+    background:var(--fog);
+    border-radius:6px;
+    padding:1.4rem 1.6rem;
+    border-left:4px solid var(--steel);
+  }
+
+  .site-card .tag{
+    font-family:'Oswald',sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    color:var(--steel);
+    text-transform:uppercase;
+  }
+
+  .site-card h3{
+    font-size:1.05rem;
+    margin:0.4rem 0 0.3rem;
+    color:var(--navy);
+  }
+
+  .site-card p{
+    font-size:0.88rem;
+    color:#555;
+  }
+
+  /* ===== VALUE CARDS ===== */
+  .value{
+    background:var(--asphalt);
+    color:var(--white);
+    position:relative;
+  }
+
+  .value .section-head .eyebrow{color:var(--line-yellow);}
+  .value .section-head h2{color:var(--white);}
+
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:1.6rem;
+  }
+
+  .value-card{
+    background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:8px;
+    padding:2rem 1.7rem;
+    position:relative;
+    transition:transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .value-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--line-yellow);
+  }
+
+  .value-num{
+    font-family:'Oswald',sans-serif;
+    font-size:0.85rem;
+    color:var(--line-yellow);
+    letter-spacing:0.15em;
+    margin-bottom:1.2rem;
+    display:block;
+  }
+
+  .value-mark{
+    width:34px;
+    height:34px;
+    margin-bottom:1.2rem;
+    position:relative;
+  }
+
+  .value-mark.diamond{background:var(--line-yellow);transform:rotate(45deg);}
+  .value-mark.circle{border-radius:50%;border:3px solid var(--steel);}
+  .value-mark.bars{
+    background:none;
+    display:flex;align-items:flex-end;gap:4px;
+  }
+  .value-mark.bars span{
+    display:block;width:6px;background:var(--steel);
+  }
+  .value-mark.bars span:nth-child(1){height:14px;}
+  .value-mark.bars span:nth-child(2){height:24px;background:var(--line-yellow);}
+  .value-mark.bars span:nth-child(3){height:34px;}
+
+  .value-mark.cross{
+    background:none;
+  }
+  .value-mark.cross::before,.value-mark.cross::after{
+    content:"";
+    position:absolute;
+    background:var(--line-yellow);
+  }
+  .value-mark.cross::before{width:100%;height:4px;top:15px;left:0;}
+  .value-mark.cross::after{width:4px;height:100%;left:15px;top:0;}
+
+  .value-mark.tri{
+    width:0;height:0;
+    border-left:17px solid transparent;
+    border-right:17px solid transparent;
+    border-bottom:30px solid var(--steel);
+  }
+
+  .value-card h3{
+    font-size:1.1rem;
+    margin-bottom:0.7rem;
+  }
+
+  .value-card p{
+    font-size:0.88rem;
+    color:rgba(255,255,255,0.75);
+  }
+
+  /* ===== SCHEDULE ===== */
+  .schedule{
+    background:var(--fog);
+  }
+
+  .timeline{
+    position:relative;
+    max-width:900px;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:6px;
+    bottom:6px;
+    width:4px;
+    background:repeating-linear-gradient(180deg, var(--steel) 0 24px, transparent 24px 40px);
+  }
+
+  .t-item{
+    position:relative;
+    padding-left:64px;
+    margin-bottom:2.4rem;
+  }
+
+  .t-item:last-child{margin-bottom:0;}
+
+  .t-dot{
+    position:absolute;
+    left:8px;
+    top:2px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--line-yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:0.85rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    border:3px solid var(--line-yellow);
+  }
+
+  .t-item h3{
+    font-size:1.05rem;
+    color:var(--navy);
+    margin-bottom:0.4rem;
+  }
+
+  .t-item p{
+    font-size:0.9rem;
+    color:#4a4f57;
+    max-width:640px;
+  }
+
+  .t-item .duration{
+    display:inline-block;
+    margin-top:0.5rem;
+    font-family:'Oswald',sans-serif;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    color:var(--steel);
+    text-transform:uppercase;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:
+      linear-gradient(180deg, rgba(11,31,58,0.97), rgba(11,31,58,1)),
+      radial-gradient(circle at 20% 80%, rgba(245,185,66,0.15), transparent 50%);
+    color:var(--white);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .closing::before{
+    content:"";
+    position:absolute;
+    left:-5%;
+    bottom:20%;
+    width:110%;
+    height:5px;
+    background:repeating-linear-gradient(90deg, var(--line-yellow) 0 50px, transparent 50px 90px);
+    opacity:0.4;
+    transform:rotate(3deg);
+  }
+
+  .closing-inner{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  .closing h2{
+    font-size:clamp(1.6rem, 3.6vw, 2.5rem);
+    margin-bottom:1.4rem;
+    font-weight:900;
+  }
+
+  .closing p{
+    color:rgba(255,255,255,0.8);
+    margin-bottom:2.4rem;
+    font-size:1rem;
+  }
+
+  .cta-btn{
+    display:inline-block;
+    background:var(--line-yellow);
+    color:var(--navy);
+    font-weight:700;
+    padding:1rem 2.6rem;
+    border-radius:3px;
+    font-size:1rem;
+    letter-spacing:0.05em;
+    box-shadow:0 8px 24px rgba(245,185,66,0.25);
+    transition:transform 0.2s ease;
+  }
+
+  .cta-btn:hover{
+    transform:translateY(-3px);
+  }
+
+  .closing .company{
+    margin-top:3rem;
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.2em;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.45);
+    text-transform:uppercase;
+  }
+
+  footer{
+    background:var(--asphalt);
+    color:rgba(255,255,255,0.4);
+    text-align:center;
+    padding:1.6rem;
+    font-size:0.78rem;
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.08em;
+  }
+
+  @media (max-width:860px){
+    .understand-grid{grid-template-columns:1fr;}
+    section{padding:4rem 6vw;}
+    .hero{padding:5rem 6vw 3rem;}
+  }
+
+  @media (max-width:520px){
+    .hero h1{font-size:1.7rem;}
+    .value-grid{grid-template-columns:1fr;}
+    .timeline::before{left:16px;}
+    .t-item{padding-left:54px;}
+    .t-dot{width:24px;height:24px;font-size:0.7rem;left:6px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="road-line"></div>
+  <div class="road-line two"></div>
+  <div class="road-line three"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Kairos Proposal — Web Development</span>
+    <h1>資金の流れを、止めるな。<br>運送業の明日を支える<span>ファクタリング</span>に、<br>信頼される顔をつくる。</h1>
+    <p class="lead">
+      新規設立される運送会社向けファクタリング事業様へ、Kairosよりコーポレートサイト＋サービス紹介サイト2種の制作をご提案いたします。走り続ける物流を止めないための資金調達サービスに、走り続けられるだけの信頼と説得力を持ったWebサイトを。
+    </p>
+    <div class="sub-note">
+      デザイン・コーディング・レスポンシブ対応まで、3サイトを一気通貫でご支援します。
+    </div>
+  </div>
+</section>
+
+<section class="understand">
+  <div class="section-head">
+    <span class="eyebrow">01 / Understanding</span>
+    <h2>この案件、私たちはこう理解しています。</h2>
+  </div>
+  <div class="understand-grid">
+    <div class="understand-text">
+      <p>
+        今回のご依頼は、単なる「1サイト制作」ではなく、<strong>新規事業の立ち上げそのもの</strong>を支えるWeb基盤づくりだと理解しています。運送会社向けファクタリングという、まだ市場に浸透しきっていない金融サービスを、これから信頼獲得と共に広めていく——その最初の接点がこのWebサイトになります。
+      </p>
+      <p>
+        荷主・運送会社の担当者が最初に見るのは「この会社は信用できるのか」という点です。コーポレートサイトでは<strong>会社としての信頼性・実在感</strong>を、2つのサービス紹介サイトでは<strong>それぞれのサービスの分かりやすさ・申込みへの導線</strong>を、明確に分けて設計する必要があると考えています。
+      </p>
+      <p>
+        また新規設立という性質上、後から情報の追加・修正が発生しやすいフェーズであることも想定し、<strong>更新しやすい構造</strong>と、<strong>公開後の柔軟な対応</strong>を前提にご提案します。
+      </p>
+    </div>
+    <div class="site-cards">
+      <div class="site-card">
+        <span class="tag">Site 01</span>
+        <h3>コーポレートサイト</h3>
+        <p>会社概要・代表挨拶・事業内容を通じて、新規設立でも安心して取引できる企業姿勢を伝える器。</p>
+      </div>
+      <div class="site-card">
+        <span class="tag">Site 02</span>
+        <h3>サービス紹介サイト A</h3>
+        <p>ファクタリングサービスの仕組み・メリット・申込みフローを、運送会社の担当者にも分かりやすく提示。</p>
+      </div>
+      <div class="site-card">
+        <span class="tag">Site 03</span>
+        <h3>サービス紹介サイト B</h3>
+        <p>もう一方のサービスラインを、独立した訴求軸・デザイントーンで整理し、比較・混同を防ぐ設計に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="section-head">
+    <span class="eyebrow">02 / What Kairos Provides</span>
+    <h2>Kairosが提供できる価値</h2>
+  </div>
+  <div class="value-grid">
+    <div class="value-card">
+      <span class="value-num">01</span>
+      <div class="value-mark diamond"></div>
+      <h3>金融サービス特有の「信頼設計」</h3>
+      <p>初見の企業に安心してもらうための情報構成・トーン設計。過度な演出を避け、誠実さが伝わるデザインに落とし込みます。</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">02</span>
+      <div class="value-mark circle"></div>
+      <h3>3サイト同時進行のディレクション</h3>
+      <p>コーポレート＋サービス2サイトを、統一感と独自性のバランスを取りながら並行制作。ブランドとしての一貫性を担保します。</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">03</span>
+      <div class="value-mark bars"><span></span><span></span><span></span></div>
+      <h3>申込み・問い合わせ導線の設計</h3>
+      <p>「見て終わり」にしないための導線設計。サービスサイトはCVを意識した情報の見せ方・配置を組み立てます。</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">04</span>
+      <div class="value-mark cross"></div>
+      <h3>デザイン・コーディング・レスポンシブを一括対応</h3>
+      <p>ご依頼工程すべてを一気通貫で対応。PC・タブレット・スマホ、すべての環境で崩れない実装まで責任を持ちます。</p>
+    </div>
+    <div class="value-card">
+      <span class="value-num">05</span>
+      <div class="value-mark tri"></div>
+      <h3>新規設立フェーズに寄り添う柔軟性</h3>
+      <p>立ち上げ期特有の情報変更・追加にも対応しやすい構造を採用。公開後の運用フェーズもスムーズに引き継ぎます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="schedule">
+  <div class="section-head">
+    <span class="eyebrow">03 / Process</span>
+    <h2>進め方・スケジュールイメージ</h2>
+  </div>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot">1</div>
+      <h3>ヒアリング・要件整理</h3>
+      <p>事業内容、2つのサービスの違い、ターゲットとなる運送会社の規模感などをヒアリングし、3サイトの役割分担を整理します。</p>
+      <span class="duration">Week 1</span>
+    </div>
+    <div class="t-item">
+      <div class="t-dot">2</div>
+      <h3>サイト構成・デザイン設計</h3>
+      <p>コーポレート＋サービスA・Bのワイヤーフレームとデザインカンプを作成。トーンの統一と各サイトの差別化を両立させます。</p>
+      <span class="duration">Week 2-3</span>
+    </div>
+    <div class="t-item">
+      <div class="t-dot">3</div>
+      <h3>コーディング・レスポンシブ実装</h3>
+      <p>デザイン確定後、3サイト分のコーディングを実施。スマートフォン・タブレットでの表示検証まで行います。</p>
+      <span class="duration">Week 4-5</span>
+    </div>
+    <div class="t-item">
+      <div class="t-dot">4</div>
+      <h3>確認・修正・公開</h3>
+      <p>ご確認いただきながら細部を調整し、公開作業まで対応。必要に応じて公開後のサポート体制もご相談可能です。</p>
+      <span class="duration">Week 6</span>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-inner">
+    <h2>新規事業のスタートラインを、<br>共に整えます。</h2>
+    <p>
+      事業の立ち上げという一度きりの機会に、信頼される最初の顔をつくらせてください。まずは詳細な要件やご希望のイメージについて、お話しできればと思います。
+    </p>
+    <a href="#" class="cta-btn">Kairosに相談する</a>
+    <div class="company">Kairos — Web & System Development Team</div>
+  </div>
+</section>
+
+<footer>
+  © Kairos. Proposal for info611 — HP作成案件
+</footer>
+
+</body>
+</html>
